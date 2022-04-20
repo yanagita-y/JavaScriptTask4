@@ -10,3 +10,7 @@ li{
 ul{
     padding-left: 0px;
 }
+
+.invisible{
+    display:none;
+}
