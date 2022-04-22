@@ -9,11 +9,11 @@ class Quiz {
   
     // クイズのジャンルを取得する
     getQuizCategory(index) {
-      return this._quizzes[index].category;
+        return this._quizzes[index].category;
     }
     // クイズの難易度を取得する
     getQuizDifficulty(index) {
-      return this._quizzes[index].difficulty;
+        return this._quizzes[index].difficulty;
     }
     // クイズの問題文を取得する
     getQuizQuestion(index) {
@@ -39,21 +39,13 @@ async function startQuiz() {
 
     // クイズ用のAPIから取得
     try{
-        let response = await fetch('https://opentdb.com/api.php?amount=10');
-        let data = await response.json(); // 👈 Promiseを返す
-        var quiz = new Quiz(data);
-        nextQuiz(quiz);
+        const response = await fetch('https://opentdb.com/api.php?amount=10');
+        const data = await response.json(); // 👈 Promiseを返す
+        const quiz = new Quiz(data);
+        viewQuiz(0,quiz);
     } catch(err) {  // 👈 エラーの場合
         alert(err);
     }
-}
-
-
-const nextQuiz = (quiz) => {
-    // 選択の一つを作る
-    viewQuiz(0,quiz);
-    // for(let i=0; i < quiz._quizzes.length; i++){
-    // }
 }
 
 const viewQuiz = (index,quiz) => {
@@ -68,7 +60,7 @@ const viewQuiz = (index,quiz) => {
     const correct = quiz.getQuizCorrectAnswers(index);
     const incorrect = quiz.getQuizIncorrectAnswers(index);
     // 正解と不正解を混ぜる
-    let answers = incorrect;
+    const answers = incorrect;
     answers.push(correct);
     answers.sort();
 
